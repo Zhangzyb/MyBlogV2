@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11672712",
+      "name": "时间",
+      "font_class": "shijian",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
       "icon_id": "20075840",
       "name": "检修",
       "font_class": "jianxiu",
