@@ -1,49 +1,42 @@
 <template>
   <div class="categories">
-    <div class="cate-item" v-for="(cate, index) in categories" :key="index">
-      <div class="cate-info">
-        <div class="cate-head" @click="currentIndex = index">
-          <span class="cate-name"> {{ cate.catename }}</span>
-          <i class="iconfont iconyoujiantou" :class="currentIndex == index ? 'down' : ''"></i>
-        </div>
-        <ul class="post-list" v-show="currentIndex == index">
-          <li v-for="(post, index) in cate.posts" :key="index">
-            <a href="javascript:;">
-              <span>{{ post.name }} </span>
-              <span>{{ post.time }}</span>
-            </a>
-          </li>
-        </ul>
+    <div class="cate-item" v-for="(item, index) in categories" :key="index">
+      <div class="cate-head" @click="currentIndex = index">
+        <span class="cate-name"> {{ item.category }}</span>
+        <i class="iconfont iconyoujiantou"></i>
+      </div>
+      <div class="cate-posts" v-if="currentIndex == index">
+        <CategoryItem :articles="item.data"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import CategoryItem from 'components/content/CategoryItem'
+import { getCategory } from "network/category";
+
 export default {
   name: "Category",
   data() {
     return {
-      categories: [
-        {
-          catename: "Python",
-          posts: [
-            { name: "Python中的多线程一", time: "2020-8-9" },
-            { name: "Python中的多线程二", time: "2020-8-9" },
-            { name: "Python中的多线程三", time: "2020-8-9" },
-          ],
-        },
-        {
-          catename: "Vue",
-          posts: [
-            { name: "Vue的响应式原理一", time: "2020-8-9" },
-            { name: "Vue的响应式原理二", time: "2020-8-9" },
-            { name: "Vue的响应式原理三", time: "2020-8-9" },
-          ],
-        },
-      ],
+      categories: [],
       currentIndex: 0,
     };
+  },
+  components:{
+    CategoryItem
+  },
+  created() {
+    this.getCategory();
+  },
+  methods: {
+    getCategory() {
+      getCategory().then((res) => {
+        this.categories = res.data;
+      });
+    },
+   
   },
 };
 </script>
@@ -52,73 +45,33 @@ export default {
 .categories {
   width: 100%;
   color: #030303;
-  border: 1px solid #e2e8ea;
+  padding: 0.5rem 0.5rem 0;
+  box-shadow: 0 0 20px 10px rgb(220 220 220 / 30%);
 }
 
 .cate-head {
   display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    font-size: 1.2rem;
-    cursor: pointer;
-    background: #dfdede;
+  justify-content: space-between;
+  padding: 0.5rem 0 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #89898914, #e2e8ea);
+  cursor: pointer;
+  border-left: 6px solid #0000001a;
 }
 
 .cate-head i {
   margin-right: 1rem;
   font-size: 1.2rem;
   color: #030303;
-  transition: all .3s;
-}
-
-.cate-name::before,
-.cate-name::after {
-  opacity: 0;
-  display: inline-block;
-  transition: transform 0.3s, opacity 0.2s;
-}
-
-.cate-name::before {
-  content: "[";
-  margin-right: 5px;
-  transform: translateX(2rem);
-}
-
-.cate-name::after {
-  content: "]";
-  margin-left: 5px;
-  transform: translateX(-2rem);
-}
-
-.cate-name:hover:before,
-.cate-name:hover:after {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.post-list {
-  transition: all 0.3s;
-}
-
-.post-list li {
-  height: 2rem;
-  line-height: 2rem;
-}
-
-.post-list a {
-  display: flex;
-  width: 100%;
-  padding: 0 0 0 2rem;
-  color: #212121a1;
-  justify-content: space-between;
   transition: all 0.2s;
 }
 
-.post-list a:hover {
-  background: rgba(0, 0, 0, 0.05);
+.cate-head:hover {
+  background: linear-gradient(45deg, #898989, #e7edef);
+  border-left: 6px solid #000000a1;
 }
 
-.down{
-    transform: rotate(90deg);
+.cate-posts {
+  padding: 0.5rem 1rem;
 }
 </style>
