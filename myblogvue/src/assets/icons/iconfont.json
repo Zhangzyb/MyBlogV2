@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "20443683",
+      "name": "good-fill",
+      "font_class": "good-fill",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "20443686",
+      "name": "bad-fill",
+      "font_class": "bad-fill",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
       "icon_id": "11672712",
       "name": "时间",
       "font_class": "shijian",
