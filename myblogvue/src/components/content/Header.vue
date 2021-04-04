@@ -1,13 +1,16 @@
 <template>
-<div class="header">
-  <div class="head-info">
-    <div class="head-img">
-      <img src="~assets/img/headimg.jpg" alt="个人头像" />
+  <div class="header">
+    <div class="head-info">
+      <div class="head-img">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Zhangzyb/MyBlogV2/myblogvue/src/assets/img/headimg.jpg"
+          alt="个人头像"
+        />
+      </div>
+      <div class="head-title">Zhangzyb</div>
+      <div class="head-text">总有人会被梦想抛弃</div>
     </div>
-    <div class="head-title">Zhangzyb</div>
-    <div class="head-text">总有人会被梦想抛弃</div>
   </div>
-</div>
 </template>
 
 <script>
@@ -19,7 +22,7 @@ export default {
 <style scoped>
 .header {
   display: flex;
-  height: 16vw;
+  height: 18vw;
   min-height: 230px;
   color: #fff;
   font-size: 1.6rem;
@@ -61,7 +64,7 @@ img:hover {
 }
 .head-title {
   color: #fff;
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
   font-weight: 700;
   padding: 0;
   text-shadow: 0 0 10px rgb(255 255 255 / 50%);
@@ -69,7 +72,7 @@ img:hover {
 }
 
 .head-text {
-  margin-top: 0.6rem;
+  margin-top: 0.8rem;
   font-size: 1.2rem;
   user-select: none;
 }

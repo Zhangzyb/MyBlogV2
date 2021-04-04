@@ -21,10 +21,21 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 992px) {
+  .main {
+    width: 90vw;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .main {
+    width: 70vw;
+  }
+}
+
 .main {
   flex: 1;
   display: flex;
-  width: 70vw;
   margin: 0 auto;
   padding: 20px 0;
 }

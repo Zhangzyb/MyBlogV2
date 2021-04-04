@@ -1,21 +1,21 @@
 <template>
-<div class="main-con">
-  <router-view></router-view>
-</div>
+  <div class="main-con">
+    <keep-alive exclude="Detail,Search">
+      <router-view></router-view>
+    </keep-alive>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "MainContent"
-  }
+  name: "MainContent",
+};
 </script>
 
 <style  scoped>
-.main-con{
+.main-con {
   flex: 3;
   display: flex;
-  flex-flow: wrap;
-  align-content: space-between;
-  padding: 0 20px;
+  justify-content: center;
 }
 </style>
